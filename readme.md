@@ -1,2 +1,3 @@
-npm install
-node ubiquity-checker.js
+# How to use
+1. npm install
+2. node ubiquity-checker.js
