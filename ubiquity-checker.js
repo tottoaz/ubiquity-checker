@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-const { exec } = require("child_process");
+const {exec} = require("child_process");
 const refreshRate = 10000;
 const urls = [
     'https://store.ui.com/collections/early-access/products/dream-router-ea',
@@ -11,21 +11,21 @@ const urls = [
 ];
 
 (async () => {
-	const browser = await puppeteer.launch();
-	const page = await browser.newPage();
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
     let urlIdx = 0;
-	var checkStock = async function(){
+    var checkStock = async function () {
         const url = urls[urlIdx];
 
-		await page.goto(url, {
-			waitUntil: 'networkidle2',
-		});
-        
-		var functionToInject = function(){
-			return document.querySelector("#app").__vue__.appData.product;
-		}
-		var toWait = Math.floor((refreshRate+Math.random()*refreshRate)/1000);
-		var data = await page.evaluate(functionToInject);
+        await page.goto(url, {
+            waitUntil: 'networkidle2',
+        });
+
+        var functionToInject = function () {
+            return document.querySelector("#app").__vue__.appData.product;
+        }
+        var toWait = Math.floor((refreshRate + Math.random() * refreshRate) / 1000);
+        var data = await page.evaluate(functionToInject);
         var item = data.variants[0];
 
         console.log(`Product: ${item.name}\nAvailable: ${item.available}\nQuantity: ${item.inventory_quantity}\n========\n`);
@@ -40,7 +40,7 @@ const urls = [
         
         urlIdx = urlIdx === (urls.length - 1) ? 0 : (urlIdx + 1);
 
-		setTimeout(checkStock, toWait*1000);
-	}
-	checkStock();
+        setTimeout(checkStock, toWait * 1000);
+    }
+    checkStock();
 })();
