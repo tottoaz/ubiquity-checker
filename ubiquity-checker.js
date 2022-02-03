@@ -34,7 +34,8 @@ const urls = [
         if (item.available || item.inventory_quantity > 0) {
             setInterval(() => {
                 console.log(`${item.name} IS IN STOCK! (${item.inventory_quantity})`);
-                exec('afplay mixkit-fast-small-sweep-transition-166.mp3')
+                // I think this will only work on mac, test it before using it.
+                // exec('afplay mixkit-fast-small-sweep-transition-166.mp3')
             }, 2500);
         }
         
