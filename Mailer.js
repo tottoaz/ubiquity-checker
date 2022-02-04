@@ -4,11 +4,12 @@ import config from './config.js';
 
 export default class MailNotifier {
     transporter;
-    from = '"Ubiquiti Checker 👻"';
+    from;
     to;
 
-    constructor(transporter, to) {
+    constructor(transporter, to, from) {
         this.transporter = transporter;
+        this.from = `Ubiquiti Checker 👻 <${from}>`
         this.to = to;
     }
 
@@ -32,7 +33,7 @@ export default class MailNotifier {
             },
         });
 
-        return new MailNotifier(transporter, transportConf.to);
+        return new MailNotifier(transporter, transportConf.to, transportConf.username);
     }
 
     async verifyConfig() {
