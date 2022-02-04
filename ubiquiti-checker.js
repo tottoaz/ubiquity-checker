@@ -2,6 +2,7 @@ import puppeteer from 'puppeteer';
 import Mailer from './Mailer.js'
 import {exec} from 'child_process';
 import config from './config.js';
+import open from 'open';
 
 const urls = config.urlsToCheck;
 let mailer;
@@ -42,6 +43,11 @@ if (config.sendMailNotifications) {
 
         if (item.available || item.inventory_quantity > 0) {
             const notificationSent = sentNotifications.includes(item.name);
+
+            if (config.openUrlOnSuccess) {
+                await open(url);
+            }
+
             console.log(`${item.name} IS IN STOCK! (${item.inventory_quantity})`);
             if (config.sendMailNotifications && !notificationSent) {
                 const mail = await mailer.send(

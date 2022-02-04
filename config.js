@@ -1,11 +1,13 @@
 export default {
     sendMailNotifications: true,
     playSound: true,
+    openUrlOnSuccess: true,
     refreshRate: 10000,
     sendTo: 'example@example.com',
     smtpHost: 'smtp.gmail.com',
     smtpPort: 465,
     urlsToCheck: [
+        // 'https://store.ui.com/collections/unifi-protect/products/unifi-protect-g4-ptz',
         'https://store.ui.com/collections/early-access/products/dream-router-ea',
         'https://store.ui.com/collections/unifi-protect/products/camera-g4-instant-ea',
         'https://store.ui.com/collections/unifi-protect/products/g4-doorbell-pro-ea',
