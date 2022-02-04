@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 import Mailer from './Mailer.js'
-import { exec } from 'child_process';
+import {exec} from 'child_process';
 import config from './config.js';
 
 const urls = config.urlsToCheck;
@@ -45,26 +45,26 @@ if (config.sendMailNotifications) {
             console.log(`${item.name} IS IN STOCK! (${item.inventory_quantity})`);
             if (config.sendMailNotifications && !notificationSent) {
                 const mail = await mailer.send(
-                    `${item.name} is in stock now!`, 
+                    `${item.name} is in stock now!`,
                     `There are ${item.inventory_quantity} ${item.name}s in stock now: ${url}`
-                    )
-                    if (mail?.accepted?.length) {
-                        console.log(`📧 Email notification sent to ${mailer.to}`);            
-                    }
-                    sentNotifications.push(item.name);
+                )
+                if (mail?.accepted?.length) {
+                    console.log(`📧 Email notification sent to ${mailer.to}`);
+                }
+                sentNotifications.push(item.name);
             }
 
             if (notificationSent) {
                 console.log('⚠️  Refusing to send email notificaion because it has already been sent.');
             }
-            
-            
+
+
             if (config.playSound) {
                 exec('afplay mixkit-fast-small-sweep-transition-166.mp3')
             }
             console.log('\n\n');
         }
-        
+
         urlIdx = urlIdx === (urls.length - 1) ? 0 : (urlIdx + 1);
 
         setTimeout(checkStock, toWait * 1000);
