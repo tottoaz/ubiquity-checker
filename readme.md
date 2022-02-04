@@ -6,4 +6,4 @@
 
 # Modification
 * Modify the "urls" array to contain the products you want to check.
-* Test that the mp3 will play on your system without error by adding a product you know is in stock. You don't want to find out that it doesn't work when something is actually in stock. If it causes an error then just delete exec('afplay mixkit-fast-small-sweep-transition-166.mp3')
+* Test that the mp3 will play on your system without error by adding a product you know is in stock. You don't want to find out that it doesn't work when something is actually in stock. If it causes an error then just delete the `exec('afplay mixkit-fast-small-sweep-transition-166.mp3')` line from the script
