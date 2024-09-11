@@ -1,3 +1,5 @@
+:warning: I have not checked, but this probably doesn't work anymore as it relied on the structure of the Ubiquiti site as it was years ago! :warning: 
+
 # How to use
 
 * You must have node installed on your computer https://nodejs.org/en/download/
